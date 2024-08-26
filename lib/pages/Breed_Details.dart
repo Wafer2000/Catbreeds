@@ -19,15 +19,9 @@ class BreedDetails extends StatefulWidget {
 
 class _BreedDetailsState extends State<BreedDetails> {
   Future<Uint8List> _loadImage(String referenceImageId) async {
-    List<String> extensions = [
-      '.jpg',
-      '.png',
-      '.gif',
-      '.bmp'
-    ]; // Agrega más extensiones si es necesario
+    List<String> extensions = ['.jpg', '.png', '.gif', '.bmp'];
     int retryCount = 0;
-    int timeout =
-        10; // Límite de tiempo para los intentos de carga (10 segundos)
+    int timeout = 10;
     DateTime startTime = DateTime.now();
 
     for (String extension in extensions) {
@@ -52,8 +46,7 @@ class _BreedDetailsState extends State<BreedDetails> {
           }
         }
       }
-      retryCount =
-          0; // Resetear el contador de reintentos para la próxima extensión
+      retryCount = 0;
     }
     throw ImageLoadException(
         'Failed to load image after trying all extensions');

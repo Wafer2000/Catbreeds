@@ -50,15 +50,9 @@ class _HomeState extends State<Home> {
   }
 
   Future<Uint8List> _loadImage(String referenceImageId) async {
-    List<String> extensions = [
-      '.jpg',
-      '.png',
-      '.gif',
-      '.bmp'
-    ]; // Agrega More extensiones si es necesario
+    List<String> extensions = ['.jpg', '.png', '.gif', '.bmp'];
     int retryCount = 0;
-    int timeout =
-        10; // Límite de tiempo para los intentos de carga (10 segundos)
+    int timeout = 10;
     DateTime startTime = DateTime.now();
 
     for (String extension in extensions) {
@@ -83,8 +77,7 @@ class _HomeState extends State<Home> {
           }
         }
       }
-      retryCount =
-          0; // Resetear el contador de reintentos para la próxima extensión
+      retryCount = 0;
     }
     throw ImageLoadException(
         'Failed to load image after trying all extensions');
@@ -175,7 +168,6 @@ class _HomeState extends State<Home> {
                                                           255, 255, 255, 255)),
                                             ),
                                             onPressed: () {
-                                              // Navegar a otra pantalla con More información
                                               Navigator.push(
                                                 context,
                                                 MaterialPageRoute(
@@ -194,9 +186,8 @@ class _HomeState extends State<Home> {
                                       const SizedBox(
                                         height: 5,
                                       ),
-                                      Container(
-                                          height:
-                                              200, // Tamaño fijo para la imagen
+                                      SizedBox(
+                                          height: 200,
                                           width: double.infinity,
                                           child: FutureBuilder(
                                             future: breed[
@@ -213,7 +204,7 @@ class _HomeState extends State<Home> {
                                                         Uint8List(0));
                                               } else if (snapshot.hasError) {
                                                 return Image.asset(
-                                                    'assets/notfoundimage.png'); // Mostrar imagen local por defecto
+                                                    'assets/notfoundimage.png');
                                               } else {
                                                 return const Center(
                                                   child: SizedBox(
@@ -224,7 +215,7 @@ class _HomeState extends State<Home> {
                                                       color: Colors.black,
                                                     ),
                                                   ),
-                                                ); // Mostrar círculo de carga mientras se carga la imagen
+                                                );
                                               }
                                             },
                                           )),
@@ -295,7 +286,6 @@ class _HomeState extends State<Home> {
                                                               255)),
                                                 ),
                                                 onPressed: () {
-                                                  // Navegar a otra pantalla con More información
                                                   Navigator.push(
                                                     context,
                                                     MaterialPageRoute(
@@ -314,9 +304,8 @@ class _HomeState extends State<Home> {
                                           const SizedBox(
                                             height: 5,
                                           ),
-                                          Container(
-                                              height:
-                                                  200, // Tamaño fijo para la imagen
+                                          SizedBox(
+                                              height: 200,
                                               width: double.infinity,
                                               child: FutureBuilder(
                                                 future: breed[
@@ -334,7 +323,7 @@ class _HomeState extends State<Home> {
                                                   } else if (snapshot
                                                       .hasError) {
                                                     return Image.asset(
-                                                        'assets/notfoundimage.png'); // Mostrar imagen local por defecto
+                                                        'assets/notfoundimage.png');
                                                   } else {
                                                     return const Center(
                                                       child: SizedBox(
@@ -345,7 +334,7 @@ class _HomeState extends State<Home> {
                                                           color: Colors.black,
                                                         ),
                                                       ),
-                                                    ); // Mostrar círculo de carga mientras se carga la imagen
+                                                    );
                                                   }
                                                 },
                                               )),
